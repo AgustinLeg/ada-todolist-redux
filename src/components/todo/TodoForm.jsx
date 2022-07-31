@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import {
   Button,
   FormControl,
@@ -8,7 +7,7 @@ import {
   Textarea,
   VStack,
 } from '@chakra-ui/react'
-
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const TodoForm = ({ onSubmit, isEditing, defaultValues }) => {
@@ -17,9 +16,7 @@ export const TodoForm = ({ onSubmit, isEditing, defaultValues }) => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm({
-    defaultValues,
-  })
+  } = useForm()
 
   useEffect(() => {
     if (defaultValues) {
@@ -58,7 +55,7 @@ export const TodoForm = ({ onSubmit, isEditing, defaultValues }) => {
         )}
       </FormControl>
       <Button type="submit" colorScheme={isEditing ? 'green' : 'blue'} w="full">
-        {isEditing ? 'Editar' : 'Agregar Todo'}
+        {isEditing ? 'Editar Todo' : 'Agregar Todo'}
       </Button>
     </VStack>
   )

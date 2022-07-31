@@ -1,4 +1,4 @@
-import { Center } from '@chakra-ui/react'
+import { Center, Heading } from '@chakra-ui/react'
 
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -12,11 +12,14 @@ export const AddTodo = () => {
 
   const onSubmit = (data) => {
     dispatch(addTodo(data))
-    navigate('/')
+    navigate('/', {
+      replace: true,
+    })
   }
 
   return (
-    <Center w="lg" pt={5} m="auto">
+    <Center w="lg" pt={5} m="auto" flexDirection="column">
+      <Heading>Nuevo Todo</Heading>
       <TodoForm onSubmit={onSubmit} />
     </Center>
   )

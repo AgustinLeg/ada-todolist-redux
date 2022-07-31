@@ -1,7 +1,7 @@
 import { Button, ButtonGroup, Heading, Text, VStack } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeTodo, toggleTodoComplete } from '../../features/todos/todosSlice'
+import { removeTodo, toggleCompleteTodo } from '../../features/todos/todosSlice'
 
 export const TodoCard = ({ todo }) => {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ export const TodoCard = ({ todo }) => {
   }
 
   const toggleComplete = () => {
-    dispatch(toggleTodoComplete(todo.id))
+    dispatch(toggleCompleteTodo(todo.id))
   }
 
   return (
@@ -19,11 +19,14 @@ export const TodoCard = ({ todo }) => {
       <Heading size="md">{todo.name}</Heading>
       <Text>{todo.message}</Text>
       <ButtonGroup size="xs">
-        <Button as={Link} to={`edit-todo/${todo.id}`} colorScheme="green">
+        <Button as={Link} to={`/edit-todo/${todo.id}`} colorScheme="green">
           Editar
         </Button>
-        <Button colorScheme="blue" onClick={toggleComplete}>
-          Completar
+        <Button
+          colorScheme={todo.isCompleted ? 'teal' : 'blue'}
+          onClick={toggleComplete}
+        >
+          {todo.isCompleted ? 'Completo' : 'Completar'}
         </Button>
         <Button colorScheme="red" onClick={handleRemove}>
           Eliminar

@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { Navbar } from './components/ui/Navbar'
 import { AddTodo } from './pages/AddTodo'
-import { EditTodo } from './pages/EditTodo'
+import { EditPage } from './pages/EditPage'
 import { Home } from './pages/Home'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add-todo" element={<AddTodo />} />
-        <Route path="/edit-todo/:id" element={<EditTodo />} />
+        <Route path="/edit-todo/:id" element={<EditPage />} />
       </Routes>
     </>
   )
